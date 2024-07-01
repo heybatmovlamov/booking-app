@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+#  java-app:
+#    container_name: java-app
+#    image: java-app
+#    ports:
+#      - "8080:8080"
+#    restart: unless-stopped
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - postgres
+#    network_mode: "host"
+#    tty: true
+#    stdin_open: true
+
+  postgres:
+    container_name: postgres-01
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
