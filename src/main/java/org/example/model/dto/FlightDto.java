@@ -10,8 +10,8 @@ public class FlightDto {
     private Long id;
     private LocalDateTime localDateTime;
     private String location;
-    private int seats;
     private String destination;
+    private int seats;
 
     public FlightDto( LocalDateTime localDateTime, String location, String destination, int seats) {
         this.localDateTime = localDateTime;
