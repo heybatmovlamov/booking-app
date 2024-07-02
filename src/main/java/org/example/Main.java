@@ -5,6 +5,8 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.example.controller.flightServlet.FlightByIdServlet;
+import org.example.controller.flightServlet.FlightByLocationServlet;
+import org.example.controller.flightServlet.FlightCreateServlet;
 
 public class Main {
     @SneakyThrows
@@ -13,7 +15,9 @@ public class Main {
 
         ServletContextHandler handler = new ServletContextHandler();
 
-        handler.addServlet(new ServletHolder(new FlightByIdServlet()), "/flight/id");
+        handler.addServlet(new ServletHolder(new FlightByIdServlet()), "/flight/getById");
+        handler.addServlet(new ServletHolder(new FlightByLocationServlet()), "/flight/getByLocation");
+        handler.addServlet(new ServletHolder(new FlightCreateServlet()), "/flight/create");
 
         server.setHandler(handler);
 
