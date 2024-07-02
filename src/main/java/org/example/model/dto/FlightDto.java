@@ -13,7 +13,7 @@ public class FlightDto {
     private String destination;
     private int seats;
 
-    public FlightDto( LocalDateTime localDateTime, String location, String destination, int seats) {
+    public FlightDto(LocalDateTime localDateTime, String location, String destination, int seats) {
         this.localDateTime = localDateTime;
         this.location = location;
         this.destination = destination;
