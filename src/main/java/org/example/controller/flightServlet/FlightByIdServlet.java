@@ -5,6 +5,7 @@ import lombok.SneakyThrows;
 import org.example.config.JdbcConfig;
 import org.example.model.entity.FlightEntity;
 import org.example.repository.flightDao.FlightDao;
+import org.example.service.FlightService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
@@ -16,13 +17,14 @@ import java.util.Optional;
 
 @NoArgsConstructor
 public class FlightByIdServlet extends HttpServlet {
+    private FlightService flightService;
 
-    private  FlightDao flightDao;
 
     @Override
     public void init(ServletConfig config) {
         JdbcConfig jdbcConfig = new JdbcConfig();
-        this.flightDao = new FlightDao(jdbcConfig);
+        FlightDao flightDao = new FlightDao(jdbcConfig);
+        this.flightService = new FlightService(flightDao);
     }
 
     @SneakyThrows
@@ -33,7 +35,7 @@ public class FlightByIdServlet extends HttpServlet {
         PrintWriter pw = resp.getWriter();
 
         int id = Integer.parseInt(req.getParameter("id"));
-        Optional<FlightEntity> flightById = flightDao.getFlightById(id);
+        Optional<FlightEntity> flightById = flightService.getFlightById(id);
         System.out.println("GET method called -> " + LocalDateTime.now());
 
         flightById.ifPresent(flight -> pw.println(flight.toString()));

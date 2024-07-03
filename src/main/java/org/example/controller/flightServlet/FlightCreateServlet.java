@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import org.example.config.JdbcConfig;
 import org.example.model.dto.FlightDto;
 import org.example.repository.flightDao.FlightDao;
+import org.example.service.FlightService;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
@@ -14,18 +15,20 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class FlightCreateServlet extends HttpServlet {
+    private FlightService flightService;
 
-    private FlightDao flightDao;
 
     @Override
     public void init(ServletConfig config) {
         JdbcConfig jdbcConfig = new JdbcConfig();
-        this.flightDao = new FlightDao(jdbcConfig);
+        FlightDao flightDao = new FlightDao(jdbcConfig);
+        this.flightService = new FlightService(flightDao);
     }
+
 
     @SneakyThrows
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)  {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         resp.setContentType("application/json");
         PrintWriter pw = resp.getWriter();
 
@@ -39,7 +42,7 @@ public class FlightCreateServlet extends HttpServlet {
         int seats = Integer.parseInt(req.getParameter("seats"));
 
         FlightDto flightDto = new FlightDto(localDateTime, location, destination, seats);
-        flightDao.createFlight(flightDto);
+        flightService.createFlight(flightDto);
 
         pw.write("{\"status\":\"success\"}");
     }
