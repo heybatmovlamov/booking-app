@@ -2,6 +2,8 @@ package org.example.model.entity;
 
 import lombok.Data;
 
+import java.util.Arrays;
+
 @Data
 public class BookingEntity {
 
@@ -18,4 +20,13 @@ public class BookingEntity {
 
     }
 
+    @Override
+    public String toString() {
+        return "BookingEntity{" +
+                "id=" + id +
+                ", passengers=" + Arrays.toString(passengers) +
+                ", amount=" + amount +
+                ", flightId=" + flightId +
+                '}';
+    }
 }

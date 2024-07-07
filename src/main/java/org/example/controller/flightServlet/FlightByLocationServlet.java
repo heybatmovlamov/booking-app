@@ -6,7 +6,6 @@ import org.example.config.JdbcConfig;
 import org.example.model.entity.FlightEntity;
 import org.example.repository.flightDao.FlightDao;
 import org.example.service.FlightService;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

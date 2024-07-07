@@ -1,18 +1,15 @@
 package org.example.service;
 
+import lombok.AllArgsConstructor;
 import org.example.model.dto.FlightDto;
 import org.example.model.entity.FlightEntity;
 import org.example.repository.FlightRepository;
 import org.example.repository.flightDao.FlightDao;
-
 import java.util.Optional;
-
+@AllArgsConstructor
 public class FlightService implements FlightRepository {
-    private final FlightDao flightDao;
 
-    public FlightService(FlightDao flightDao) {
-        this.flightDao = flightDao;
-    }
+    private final FlightDao flightDao;
 
     @Override
     public Optional<FlightEntity> getFlightById(int id) {
