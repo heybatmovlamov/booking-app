@@ -7,10 +7,10 @@ import org.example.repository.SystemRepository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class SystemDao implements SystemRepository {
+public class SystemFlightDao implements SystemRepository {
    private final JdbcConfig jdbcConfig;
 
-    public SystemDao(JdbcConfig jdbcConfig) {
+    public SystemFlightDao(JdbcConfig jdbcConfig) {
         this.jdbcConfig = jdbcConfig;
     }
 
