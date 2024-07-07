@@ -17,9 +17,6 @@ public class FlightEntity {
         this.destination = destination;
         this.seats = seats;
     }
-    private synchronized long generateUniqueId() {
-        return id++;
-    }
     @Override
     public String toString() {
         return "Flight{" +
