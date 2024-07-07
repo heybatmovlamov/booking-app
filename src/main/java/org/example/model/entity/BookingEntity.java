@@ -1,20 +1,21 @@
 package org.example.model.entity;
 
+import lombok.Data;
+
+@Data
 public class BookingEntity {
 
-    private static Long id;
+    private Long id;
     private String[] passengers;
-    private long flightId;
     private int amount;
+    private long flightId;
 
-    public BookingEntity(String[] passengers, long flightId, int amount) {
-        id = generateUniqueId();
+    public BookingEntity(Long id ,String[] passengers,  int amount ,long flightId) {
+        this.id=id;
         this.passengers = passengers;
-        this.flightId = flightId;
         this.amount = amount;
+        this.flightId = flightId;
+
     }
 
-    private synchronized long generateUniqueId() {
-        return id++;
-    }
 }
